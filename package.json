@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/oki987/osuka_bot#readme",
   "dependencies": {
-    "discord.js": "^11.5.1"
+    "discord.js": "^11.5.1",
+    "dotenv-flow": "^3.1.0"
   }
 }

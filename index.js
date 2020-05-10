@@ -1,5 +1,12 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
+require('dotenv-flow').config();
+
+const config = {
+    token: process.env.TOKEN,
+    owner: process.env.OWNER,
+    prefix: process.env.PREFIX
+}
 
 client.on('ready', () => {
   console.log(`Zalogowano jako ${client.user.tag}!`);
@@ -7,8 +14,8 @@ client.on('ready', () => {
 
 client.on('message', msg => {
   if (msg.content === 'ping') {
-    msg.reply('Pong!');
+    return msg.reply('pong');
   }
 });
 
-client.login('NjkwNTEzMDc1OTkxNzQwNDU2.XrfRoA.6gAHnjhVwDxSFg_RJdXbcoiQb38');
+client.login(config.token);
