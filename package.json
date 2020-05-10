@@ -1,0 +1,24 @@
+{
+  "name": "osuka_bot",
+  "version": "1.0.0",
+  "description": "Discord Bot in my server NelsoN Zation",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node index.js",
+    "dev:watch": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oki987/osuka_bot.git"
+  },
+  "author": "Oskar NelsoN Nykiel",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/oki987/osuka_bot/issues"
+  },
+  "homepage": "https://github.com/oki987/osuka_bot#readme",
+  "dependencies": {
+    "discord.js": "^11.5.1"
+  }
+}
