@@ -1,6 +1,6 @@
-const Discord = require('discord.js');
-const client = new Discord.Client();
-require('dotenv-flow').config();
+const Discord = require('discord.js')
+const client = new Discord.Client()
+require('dotenv-flow').config()
 
 const config = {
     token: process.env.TOKEN,
@@ -8,14 +8,33 @@ const config = {
     prefix: process.env.PREFIX
 }
 
-client.on('ready', () => {
-  console.log(`Zalogowano jako ${client.user.tag}!`);
-});
+const log = console.log;
 
-client.on('message', msg => {
-  if (msg.content === 'ping') {
-    return msg.reply('pong');
+client.on('ready', () => {
+
+  log(`Zalogowano jako ${client.user.tag}!`)
+})
+
+client.on('message', (msg) => {
+  const { author, guild } = msg
+  //check if user is a bot
+  if(author.bot || !guild){
+    return
+  }
+  //ignore message without prefix
+  if(msg.content.indexOf(config.prefix) !== 0) return
+
+  const args = msg.content
+  .slice(config.prefix.length)
+  .trim()
+  .split(/ +/g)
+
+const cmd = args.shift().toLowerCase()
+  
+
+  if (cmd === 'hej') {
+    return msg.reply('siemanko')
   }
 });
 
-client.login(config.token);
+client.login(config.token)
