@@ -1,5 +1,5 @@
-const Discord = require('discord.js')
-const client = new Discord.Client()
+const {Client, RichEmbed} = require('discord.js')
+const client = new Client()
 require('dotenv-flow').config()
 
 const config = {
@@ -16,7 +16,7 @@ client.on('ready', () => {
 })
 
 client.on('message', (msg) => {
-  const { author, guild } = msg
+  const { author, guild, channel } = msg
   //check if user is a bot
   if(author.bot || !guild){
     return
@@ -33,8 +33,34 @@ const cmd = args.shift().toLowerCase()
   
 
   if (cmd === 'hej') {
-    return msg.reply('siemanko')
+    msg.reply('siemanko')
+  }
+
+  if(cmd === 'info'){
+    const botAuthor = "nelsonio"
+    const botVersion = "v1.1"
+    const botName = "Osuka"
+    const botDescription = "Bot dla serwera NelsoN Zation"
+
+    const embed = new RichEmbed()
+    // Set the title of the field
+    .setTitle(botName)
+    // Set the color of the embed
+    .setColor(0x349eeb)
+    // Set the main content of the embed
+    .setDescription(botDescription)
+    .addField("Autor", botAuthor, true)
+    .addField("Wersja", botVersion, true)
+
+    msg.delete()
+
+  channel.send(embed)
   }
 });
 
 client.login(config.token)
+
+// Error handler - omit crashed
+client.on("debug", () => {})
+client.on("warn", () => {})
+client.on("error", () => {})
